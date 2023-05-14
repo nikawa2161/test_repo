@@ -11,10 +11,11 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex sm:items-center">
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('管理者ダッシュボード') }}
                     </x-nav-link>
+                    <p>admin_navigation.blade</p>
                 </div>
             </div>
 

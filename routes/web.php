@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProfileController as ProfileOfAdminController;
+// use App\Http\Controllers\ProfileController as ProfileOfAdminController;
+use App\Http\Controllers\ProfileOfAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
