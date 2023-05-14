@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 // Organization
 use App\Http\Controllers\Admin\Organization\OfferController;
+use App\Http\Controllers\Admin\Organization\IndustryController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -65,4 +66,7 @@ Route::middleware('auth:admin')->group(function () {
 Route::middleware('auth:admin')->group(function () {
     Route::get('offer', [OfferController::class, 'index'])
                 ->name('offer');
+
+    Route::get('industry', [IndustryController::class, 'index'])
+                ->name('industry');
 });
