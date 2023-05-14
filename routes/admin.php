@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+// Organization
+use App\Http\Controllers\Admin\Organization\OfferController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {
@@ -56,4 +59,10 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+});
+
+// 追加機能
+Route::middleware('auth:admin')->group(function () {
+    Route::get('offer', [OfferController::class, 'index'])
+                ->name('offer');
 });
