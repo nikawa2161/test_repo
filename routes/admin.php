@@ -67,6 +67,23 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('offer', [OfferController::class, 'index'])
                 ->name('offer');
 
+
     Route::get('industry', [IndustryController::class, 'index'])
                 ->name('industry');
+
+    Route::get('industry/create', [IndustryController::class, 'create'])
+                ->name('industry.create');
+
+    Route::post('industry', [IndustryController::class, 'store']);
+
+    Route::get('industry/{id}', [IndustryController::class, 'show'])
+                ->name('industry.show');
+
+    Route::get('industry/{id}/edit', [IndustryController::class, 'edit'])
+                ->name('industry.edit');
+
+    Route::put('industry/{id}/edit', [IndustryController::class, 'update']);
+
+    Route::delete('industry/{id}', [IndustryController::class, 'destroy'])
+                ->name('industry.destroy');
 });

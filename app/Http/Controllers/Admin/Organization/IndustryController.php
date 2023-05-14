@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Models\Industry;
 use Illuminate\Http\Request;
 
 class IndustryController extends Controller
@@ -12,7 +13,8 @@ class IndustryController extends Controller
      */
     public function index()
     {
-        return view('admin.organization.industry');
+        $industries = Industry::all();
+        return view('admin.organization.industry', ['industries' => $industries]);
     }
 
     /**
@@ -20,7 +22,7 @@ class IndustryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.organization.industry_create');
     }
 
     /**
@@ -28,7 +30,13 @@ class IndustryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        Industry::create($request->all());
+        return redirect()->route('admin.industry')
+                        ->with('success','新規作成しました。');
     }
 
     /**
@@ -36,7 +44,9 @@ class IndustryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $industry = Industry::findOrFail($id);
+
+        return view('admin.organization.industry_show', compact('industry'));
     }
 
     /**
@@ -44,7 +54,9 @@ class IndustryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $industry = Industry::findOrFail($id);
+
+        return view('admin.organization.industry_edit', compact('industry'));
     }
 
     /**
@@ -52,7 +64,16 @@ class IndustryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $industry = Industry::findOrFail($id);
+
+        $data = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $industry->update($data);
+
+        return redirect()->route('admin.industry')
+                        ->with('success', 'アイテムが更新されました');
     }
 
     /**
@@ -60,6 +81,10 @@ class IndustryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $industry = Industry::findOrFail($id);
+        $industry->delete();
+
+        return redirect()->route('admin.industry')
+        ->with('success','アイテムが削除されました');
     }
 }
