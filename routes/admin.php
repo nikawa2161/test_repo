@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\Organization\OfferController;
 use App\Http\Controllers\Admin\Organization\IndustryController;
 use App\Http\Controllers\Admin\Organization\UserController;
+use App\Http\Controllers\Admin\Organization\FeatureController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {
@@ -97,4 +98,8 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::delete('user/{id}', [UserController::class, 'destroy'])
                 ->name('user.destroy');
+
+    // 特徴
+    Route::get('feature', [FeatureController::class, 'index'])
+                ->name('feature');
 });
