@@ -10,9 +10,10 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 // Organization
+use App\Http\Controllers\Admin\Organization\CompanyController;
+use App\Http\Controllers\Admin\Organization\UserController;
 use App\Http\Controllers\Admin\Organization\OfferController;
 use App\Http\Controllers\Admin\Organization\IndustryController;
-use App\Http\Controllers\Admin\Organization\UserController;
 use App\Http\Controllers\Admin\Organization\FeatureController;
 use Illuminate\Support\Facades\Route;
 
@@ -88,6 +89,10 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::delete('industry/{id}', [IndustryController::class, 'destroy'])
                 ->name('industry.destroy');
+
+    //  企業
+    Route::get('company', [CompanyController::class, 'index'])
+                ->name('company');
 
     // ユーザー管理
     Route::get('user', [UserController::class, 'index'])
