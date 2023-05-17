@@ -91,4 +91,7 @@ Route::middleware('auth:admin')->group(function () {
     // ユーザー管理
     Route::get('user', [UserController::class, 'index'])
                 ->name('user');
+
+    Route::get('user/{id}', [UserController::class, 'show'])
+                ->name('user.show');
 });
