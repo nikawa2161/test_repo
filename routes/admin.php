@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 // Organization
 use App\Http\Controllers\Admin\Organization\OfferController;
 use App\Http\Controllers\Admin\Organization\IndustryController;
-
+use App\Http\Controllers\Admin\Organization\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {
@@ -64,10 +64,11 @@ Route::middleware('auth:admin')->group(function () {
 
 // 追加機能
 Route::middleware('auth:admin')->group(function () {
+    // 求人
     Route::get('offer', [OfferController::class, 'index'])
                 ->name('offer');
 
-
+    // 業界
     Route::get('industry', [IndustryController::class, 'index'])
                 ->name('industry');
 
@@ -86,4 +87,8 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::delete('industry/{id}', [IndustryController::class, 'destroy'])
                 ->name('industry.destroy');
+
+    // ユーザー管理
+    Route::get('user', [UserController::class, 'index'])
+                ->name('user');
 });
