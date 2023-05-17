@@ -7,6 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 flex justify-end">
+            <x-my-delete-link :action="route('admin.user.destroy', $user->id)">
+                {{ __('ユーザー削除') }}
+            </x-my-delete-link>
         </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">

@@ -94,4 +94,7 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::get('user/{id}', [UserController::class, 'show'])
                 ->name('user.show');
+
+    Route::delete('user/{id}', [UserController::class, 'destroy'])
+                ->name('user.destroy');
 });

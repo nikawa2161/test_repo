@@ -17,12 +17,9 @@
                                 <x-my-nav-link :href="route('admin.user.show',[ $user->id ])">
                                     {{ __('詳細') }}
                                 </x-my-nav-link>
-                                {{-- <x-my-nav-link :href="route('admin.user.edit',[ $user->id ])">
-                                    {{ __('編集') }}
-                                </x-my-nav-link>
                                 <x-my-delete-link :action="route('admin.user.destroy', $user->id)">
                                     {{ __('削除') }}
-                                </x-my-delete-link> --}}
+                                </x-my-delete-link>
                             </div>
                       </div>
                     </div>
