@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Company\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
@@ -12,22 +13,37 @@ class OfferController extends Controller
      */
     public function index()
     {
-        return view('company.organization.offer');
+        $offers = Offer::all();
+        return view('company.organization.offer', ['offers' => $offers]);
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for creating a new resource.
      */
-    public function show(string $id)
+    public function create()
     {
-        //
+        return view('company.organization.offer_create');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Store a newly created resource in storage.
      */
-    public function destroy(string $id)
+    public function store(Request $request)
     {
-        //
+        $params = $request->only(['title', "content"]); // 値を限定する
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        // 下記をcreateメソッドに書き直して下さい
+        Offer::create([
+            'title' => $params['title'],
+            'content' => $params['content'],
+            'company_id' => auth()->user()->id, // 外部キー
+        ]);
+
+        return redirect()->route('company.offer')
+            ->with('success', '求人を作成しました。');
     }
 }
