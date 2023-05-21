@@ -22,5 +22,8 @@ class AppServiceProvider extends ServiceProvider
         if (request()->is('admin/*')) {
             config(['session.cookie' => config('session.cookie_admin')]);
         }
+        // if (request()->is('company/*')) {
+        //     config(['session.cookie' => config('session.cookie_company')]);
+        // }
     }
 }
