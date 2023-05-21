@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company\Organization;
 use App\Http\Controllers\Controller;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OfferController extends Controller
 {
@@ -13,7 +14,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offers = Offer::all();
+        $offers = Offer::where('company_id', Auth::user()->id)->get();
         return view('company.organization.offer', ['offers' => $offers]);
     }
 

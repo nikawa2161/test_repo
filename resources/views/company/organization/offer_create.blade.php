@@ -10,7 +10,6 @@
             <form action="{{ route('company.offer') }}" method="POST">
                 @csrf
                 <div>
-                    {{-- <input type="hidden" name="company_id" id="company_id" value={{ Auth::user()->id }}> --}}
                     <label for="title">求人タイトル</label>
                     <input type="text" name="title" id="title" required>
                     <label for="content">募集内容</label>
