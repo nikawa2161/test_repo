@@ -100,6 +100,12 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('company', [CompanyController::class, 'index'])
         ->name('company');
 
+    Route::delete('company/{id}', [CompanyController::class, 'destroy'])
+        ->name('company.destroy');
+
+    Route::get('company/{id}', [CompanyController::class, 'show'])
+        ->name('company.show');
+
     // ユーザー管理
     Route::get('user', [UserController::class, 'index'])
         ->name('user');

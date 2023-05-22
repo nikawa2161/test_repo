@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -12,47 +13,18 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('admin.organization.company');
+        $companies = Company::All();
+
+        return view('admin.organization.company', ["companies" => $companies]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        $company = Company::findOrFail($id);
+        return view('admin.organization.company_show', compact('company'));
     }
 
     /**
@@ -60,6 +32,10 @@ class CompanyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+
+        return redirect()->route('admin.company')
+        ->with('success','アイテムが削除されました');
     }
 }
