@@ -15,6 +15,14 @@
                             <p class="mb-4 text-xl font-bold text-indigo-500 md:text-2xl">タイトル：{{ $offer->title }}</p>
                             <p class="text-xl font-bold text-indigo-500 md:text-2xl">内容：{{ $offer->content }}</p>
                         </div>
+                            <div class="">
+                                <x-my-nav-link :href="route('admin.offer.show',[ $offer->id ])">
+                                    {{ __('詳細') }}
+                                </x-my-nav-link>
+                                <x-my-delete-link :action="route('admin.offer.destroy', $offer->id)">
+                                    {{ __('削除') }}
+                                </x-my-delete-link>
+                            </div>
                       </div>
                     </div>
                   </li>

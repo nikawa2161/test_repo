@@ -22,7 +22,8 @@ class OfferController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $offer = Offer::findOrFail($id);
+        return view('admin.organization.offer_show', compact('offer'));
     }
 
     /**
@@ -30,6 +31,10 @@ class OfferController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $offer = Offer::findOrFail($id);
+        $offer->delete();
+
+        return redirect()->route('admin.offer')
+        ->with('success','アイテムが削除されました');
     }
 }
