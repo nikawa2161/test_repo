@@ -119,4 +119,17 @@ Route::middleware('auth:admin')->group(function () {
     // 特徴
     Route::get('feature', [FeatureController::class, 'index'])
         ->name('feature');
+
+    Route::get('feature/create', [FeatureController::class, 'create'])
+        ->name('feature.create');
+
+    Route::post('feature', [FeatureController::class, 'store']);
+
+    Route::get('feature/{id}/edit', [FeatureController::class, 'edit'])
+        ->name('feature.edit');
+
+    Route::put('feature/{id}/edit', [FeatureController::class, 'update']);
+
+    Route::delete('feature/{id}', [FeatureController::class, 'destroy'])
+        ->name('feature.destroy');
 });

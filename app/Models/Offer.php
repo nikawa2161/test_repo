@@ -19,4 +19,9 @@ class Offer extends Model
     public function company(){
         return $this->belongsTo(Company::class);
     }
+
+    // Offerとfeatureのリレーション
+    public function feature(){
+        return $this->belongsTo(Feature::class);
+    }
 }

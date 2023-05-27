@@ -37,7 +37,6 @@ class OfferController extends Controller
             'content' => 'required',
         ]);
 
-        // 下記をcreateメソッドに書き直して下さい
         Offer::create([
             'title' => $params['title'],
             'content' => $params['content'],
