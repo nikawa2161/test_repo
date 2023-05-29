@@ -10,80 +10,126 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 // Organization
+use App\Http\Controllers\Admin\Organization\CompanyController;
+use App\Http\Controllers\Admin\Organization\UserController;
 use App\Http\Controllers\Admin\Organization\OfferController;
 use App\Http\Controllers\Admin\Organization\IndustryController;
-
+use App\Http\Controllers\Admin\Organization\FeatureController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
+        ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
-                ->name('login');
+        ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-                ->name('password.request');
+        ->name('password.request');
 
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->name('password.email');
+        ->name('password.email');
 
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->name('password.reset');
+        ->name('password.reset');
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
-                ->name('password.store');
+        ->name('password.store');
 });
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
-                ->name('verification.notice');
+        ->name('verification.notice');
 
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-                ->middleware(['signed', 'throttle:6,1'])
-                ->name('verification.verify');
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
 
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-                ->middleware('throttle:6,1')
-                ->name('verification.send');
+        ->middleware('throttle:6,1')
+        ->name('verification.send');
 
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
-                ->name('password.confirm');
+        ->name('password.confirm');
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+        ->name('logout');
 });
 
 // 追加機能
 Route::middleware('auth:admin')->group(function () {
+    // 求人
     Route::get('offer', [OfferController::class, 'index'])
-                ->name('offer');
+        ->name('offer');
 
+    Route::get('offer/{id}', [OfferController::class, 'show'])
+        ->name('offer.show');
 
+    Route::delete('offer/{id}', [OfferController::class, 'destroy'])
+        ->name('offer.destroy');
+
+    // 業界
     Route::get('industry', [IndustryController::class, 'index'])
-                ->name('industry');
+        ->name('industry');
 
     Route::get('industry/create', [IndustryController::class, 'create'])
-                ->name('industry.create');
+        ->name('industry.create');
 
     Route::post('industry', [IndustryController::class, 'store']);
 
     Route::get('industry/{id}', [IndustryController::class, 'show'])
-                ->name('industry.show');
+        ->name('industry.show');
 
     Route::get('industry/{id}/edit', [IndustryController::class, 'edit'])
-                ->name('industry.edit');
+        ->name('industry.edit');
 
     Route::put('industry/{id}/edit', [IndustryController::class, 'update']);
 
     Route::delete('industry/{id}', [IndustryController::class, 'destroy'])
-                ->name('industry.destroy');
+        ->name('industry.destroy');
+
+    //  企業
+    Route::get('company', [CompanyController::class, 'index'])
+        ->name('company');
+
+    Route::delete('company/{id}', [CompanyController::class, 'destroy'])
+        ->name('company.destroy');
+
+    Route::get('company/{id}', [CompanyController::class, 'show'])
+        ->name('company.show');
+
+    // ユーザー管理
+    Route::get('user', [UserController::class, 'index'])
+        ->name('user');
+
+    Route::get('user/{id}', [UserController::class, 'show'])
+        ->name('user.show');
+
+    Route::delete('user/{id}', [UserController::class, 'destroy'])
+        ->name('user.destroy');
+
+    // 特徴
+    Route::get('feature', [FeatureController::class, 'index'])
+        ->name('feature');
+
+    Route::get('feature/create', [FeatureController::class, 'create'])
+        ->name('feature.create');
+
+    Route::post('feature', [FeatureController::class, 'store']);
+
+    Route::get('feature/{id}/edit', [FeatureController::class, 'edit'])
+        ->name('feature.edit');
+
+    Route::put('feature/{id}/edit', [FeatureController::class, 'update']);
+
+    Route::delete('feature/{id}', [FeatureController::class, 'destroy'])
+        ->name('feature.destroy');
 });

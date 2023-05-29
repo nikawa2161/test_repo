@@ -5,10 +5,10 @@
 
             <!-- ログアウト -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <form method="POST" action="{{ route('admin.logout') }}">
+                <form method="POST" action="{{ route('company.logout') }}">
                 @csrf
 
-                <x-dropdown-link :href="route('admin.logout')"
+                <x-dropdown-link :href="route('company.logout')"
                 onclick="event.preventDefault();
                             this.closest('form').submit();">
                     {{ __('ログアウト') }}

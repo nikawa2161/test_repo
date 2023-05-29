@@ -3,27 +3,28 @@
 namespace App\Http\Controllers\Admin\Organization;
 
 use App\Http\Controllers\Controller;
-use App\Models\Offer;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
-class OfferController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $offers = Offer::all();
-        return view('admin.organization.offer', ["offers" => $offers]);
+        $companies = Company::All();
+
+        return view('admin.organization.company', ["companies" => $companies]);
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for creating a new resource.
      */
     public function show(string $id)
     {
-        $offer = Offer::findOrFail($id);
-        return view('admin.organization.offer_show', compact('offer'));
+        $company = Company::findOrFail($id);
+        return view('admin.organization.company_show', compact('company'));
     }
 
     /**
@@ -31,10 +32,10 @@ class OfferController extends Controller
      */
     public function destroy(string $id)
     {
-        $offer = Offer::findOrFail($id);
-        $offer->delete();
+        $company = Company::findOrFail($id);
+        $company->delete();
 
-        return redirect()->route('admin.offer')
+        return redirect()->route('admin.company')
         ->with('success','アイテムが削除されました');
     }
 }
