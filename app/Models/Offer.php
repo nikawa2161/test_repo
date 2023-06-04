@@ -24,4 +24,9 @@ class Offer extends Model
     public function feature(){
         return $this->belongsTo(Feature::class);
     }
+
+    // Offerとentryのリレーション
+    public function entry(){
+        return $this->belongsTo(Application::class);
+    }
 }

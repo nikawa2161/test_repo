@@ -11,6 +11,7 @@ use App\Http\Controllers\Company\Auth\RegisteredUserController;
 use App\Http\Controllers\Company\Auth\VerifyEmailController;
 // Organization
 use App\Http\Controllers\Company\Organization\OfferController;
+use App\Http\Controllers\Company\Organization\EntryController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:company')->group(function () {
@@ -71,14 +72,9 @@ Route::middleware('auth:company')->group(function () {
 
     Route::post('offer', [OfferController::class, 'store']);
 
-    // Route::get('offer/{id}', [OfferController::class, 'show'])
-    //     ->name('offer.show');
+    Route::get('entry', [EntryController::class, 'index'])
+        ->name('entry');
 
-    // Route::get('offer/{id}/edit', [OfferController::class, 'edit'])
-    //     ->name('offer.edit');
-
-    // Route::put('offer/{id}/edit', [OfferController::class, 'update']);
-
-    // Route::delete('offer/{id}', [OfferController::class, 'destroy'])
-    //     ->name('offer.destroy');
+    Route::get('entry/{id}', [EntryController::class, 'show'])
+        ->name('entry.show');
 });
