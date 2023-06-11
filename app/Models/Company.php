@@ -21,6 +21,7 @@ class Company extends Authenticatable
         'email',
         'password',
         'tell',
+        'parent_id',
     ];
 
     /**

@@ -12,6 +12,7 @@ use App\Http\Controllers\Company\Auth\VerifyEmailController;
 // Organization
 use App\Http\Controllers\Company\Organization\OfferController;
 use App\Http\Controllers\Company\Organization\EntryController;
+use App\Http\Controllers\Company\Organization\AccountController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:company')->group(function () {
@@ -63,6 +64,7 @@ Route::middleware('auth:company')->group(function () {
 
 // 追加機能
 Route::middleware('auth:company')->group(function () {
+// Route::middleware(['auth:company', 'AuthSomeCompany'])->group(function () {
     // 求人
     Route::get('offer', [OfferController::class, 'index'])
         ->name('offer');
@@ -72,9 +74,19 @@ Route::middleware('auth:company')->group(function () {
 
     Route::post('offer', [OfferController::class, 'store']);
 
+    // 応募
     Route::get('entry', [EntryController::class, 'index'])
         ->name('entry');
 
     Route::get('entry/{id}', [EntryController::class, 'show'])
         ->name('entry.show');
+
+    // アカウント管理
+    Route::get('account', [AccountController::class, 'index'])
+        ->name('account');
+
+    Route::get('account/create', [AccountController::class, 'create'])
+        ->name('account.create');
+
+    Route::post('account', [AccountController::class, 'store']);
 });
