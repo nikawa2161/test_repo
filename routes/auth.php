@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\user\OfferController;
+use App\Http\Controllers\user\EntryController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -56,4 +58,14 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+    // 求人
+    Route::get('offer', [OfferController::class, 'index'])
+        ->name('offer');
+
+    Route::get('offer/{id}', [OfferController::class, 'show'])
+        ->name('offer.show');
+
+    Route::post('entry', [EntryController::class, 'store'])
+        ->name('entry');
 });

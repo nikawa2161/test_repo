@@ -64,7 +64,6 @@ Route::middleware('auth:company')->group(function () {
 
 // 追加機能
 Route::middleware('auth:company')->group(function () {
-// Route::middleware(['auth:company', 'AuthSomeCompany'])->group(function () {
     // 求人
     Route::get('offer', [OfferController::class, 'index'])
         ->name('offer');
