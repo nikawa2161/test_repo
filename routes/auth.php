@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\user\OfferController;
 use App\Http\Controllers\user\EntryController;
+use App\Http\Controllers\user\MessageController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -68,4 +69,14 @@ Route::middleware('auth')->group(function () {
 
     Route::post('entry', [EntryController::class, 'store'])
         ->name('entry');
+
+    // メッセージ機能
+    Route::get('message', [MessageController::class, 'index'])
+        ->name('message');
+
+    Route::get('message/room/{id}', [MessageController::class, 'room'])
+        ->name('message.room');
+
+    Route::post('message/room/{id}', [MessageController::class, 'store'])
+        ->name('message.store');
 });

@@ -14,9 +14,6 @@
                 応募済み
             </button>
             @else
-            {{-- <x-my-nav-link :href="route('entry')">
-                {{ __('この求人に応募する') }}
-            </x-my-nav-link> --}}
             <form method="post" action="{{ route('entry') }}">
                 @csrf
                 <input type="hidden" name="offer_id" value="{{ $offer->id }}">
