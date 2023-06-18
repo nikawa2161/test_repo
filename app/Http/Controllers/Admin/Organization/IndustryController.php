@@ -14,6 +14,7 @@ class IndustryController extends Controller
     public function index()
     {
         $industries = Industry::all();
+
         return view('admin.organization.industry', ['industries' => $industries]);
     }
 
@@ -35,8 +36,9 @@ class IndustryController extends Controller
         ]);
 
         Industry::create($request->all());
+
         return redirect()->route('admin.industry')
-                        ->with('success','新規作成しました。');
+            ->with('success', '新規作成しました。');
     }
 
     /**
@@ -73,7 +75,7 @@ class IndustryController extends Controller
         $industry->update($data);
 
         return redirect()->route('admin.industry')
-                        ->with('success', 'アイテムが更新されました');
+            ->with('success', 'アイテムが更新されました');
     }
 
     /**
@@ -85,6 +87,6 @@ class IndustryController extends Controller
         $industry->delete();
 
         return redirect()->route('admin.industry')
-        ->with('success','アイテムが削除されました');
+            ->with('success', 'アイテムが削除されました');
     }
 }

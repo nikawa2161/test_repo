@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Organization;
 
 use App\Http\Controllers\Controller;
 use App\Models\Offer;
-use Illuminate\Http\Request;
 
 class OfferController extends Controller
 {
@@ -14,7 +13,8 @@ class OfferController extends Controller
     public function index()
     {
         $offers = Offer::all();
-        return view('admin.organization.offer', ["offers" => $offers]);
+
+        return view('admin.organization.offer', ['offers' => $offers]);
     }
 
     /**
@@ -23,6 +23,7 @@ class OfferController extends Controller
     public function show(string $id)
     {
         $offer = Offer::findOrFail($id);
+
         return view('admin.organization.offer_show', compact('offer'));
     }
 
@@ -35,6 +36,6 @@ class OfferController extends Controller
         $offer->delete();
 
         return redirect()->route('admin.offer')
-        ->with('success','アイテムが削除されました');
+            ->with('success', 'アイテムが削除されました');
     }
 }

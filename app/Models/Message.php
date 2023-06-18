@@ -18,8 +18,8 @@ class Message extends Authenticatable
     ];
 
     // MessageとApplicationのリレーション
-    public function messageRoom(){
+    public function messageRoom()
+    {
         return $this->hasMany(Application::class);
     }
-
 }

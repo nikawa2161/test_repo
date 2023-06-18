@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Company\Organization;
 
 use App\Http\Controllers\Controller;
-use App\Models\Application;
 use App\Models\Company;
-use App\Models\Offer;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -51,10 +49,9 @@ class AccountController extends Controller
             ]);
         }
 
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . Company::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Company::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'tell' => 'required',
         ]);

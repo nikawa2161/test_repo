@@ -34,13 +34,13 @@ class EntryController extends Controller
         // メッセージの取得
         $messages = Message::where('application_id', $roomInfo->id)->get();
 
-        return view('company.organization.entry_show', compact('roomInfo', 'user', 'offer','messages'));
+        return view('company.organization.entry_show', compact('roomInfo', 'user', 'offer', 'messages'));
     }
 
         // メッセージ送信
         public function store(Request $request, string $id)
         {
-            $operatorId = "0";
+            $operatorId = '0';
 
             Message::create([
                 'operator' => $operatorId,

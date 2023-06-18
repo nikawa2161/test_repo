@@ -15,7 +15,8 @@ class Feature extends Model
     ];
 
     // featureとofferのリレーション
-    public function offer(){
+    public function offer()
+    {
         return $this->belongsTo(Offer::class);
     }
 }

@@ -44,8 +44,8 @@ class Company extends Authenticatable
     ];
 
     // OfferとCompanyのリレーション
-    public function offer(){
+    public function offer()
+    {
         return $this->hasMany(Offer::class);
     }
-
 }

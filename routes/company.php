@@ -10,9 +10,9 @@ use App\Http\Controllers\Company\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Company\Auth\RegisteredUserController;
 use App\Http\Controllers\Company\Auth\VerifyEmailController;
 // Organization
-use App\Http\Controllers\Company\Organization\OfferController;
-use App\Http\Controllers\Company\Organization\EntryController;
 use App\Http\Controllers\Company\Organization\AccountController;
+use App\Http\Controllers\Company\Organization\EntryController;
+use App\Http\Controllers\Company\Organization\OfferController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:company')->group(function () {

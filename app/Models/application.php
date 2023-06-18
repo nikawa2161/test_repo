@@ -15,12 +15,14 @@ class Application extends Model
     ];
 
     // ApplicationとUserのリレーション
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
     // ApplicationとOfferのリレーション
-    public function offer(){
+    public function offer()
+    {
         return $this->belongsTo(Offer::class);
     }
 }

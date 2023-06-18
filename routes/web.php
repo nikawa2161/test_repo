@@ -34,9 +34,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
 // 管理画面
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('admin.welcome');
     });
@@ -54,7 +53,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 });
 
 // 企業画面
-Route::prefix('company')->name('company.')->group(function(){
+Route::prefix('company')->name('company.')->group(function () {
     Route::get('/', function () {
         return view('company.welcome');
     });

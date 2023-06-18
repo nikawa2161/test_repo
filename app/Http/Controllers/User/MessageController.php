@@ -28,8 +28,8 @@ class MessageController extends Controller
         $offer = Offer::find($id);
         $company = $offer->company;
         $roomInfo = Application::where('user_id', Auth::id())
-                          ->where('offer_id', $id)
-                          ->first();
+            ->where('offer_id', $id)
+            ->first();
         // メッセージの取得
         $messages = Message::where('application_id', $roomInfo->id)->get();
 
@@ -39,7 +39,7 @@ class MessageController extends Controller
     // メッセージ送信
     public function store(Request $request)
     {
-        $operatorId = "user";
+        $operatorId = 'user';
 
         Message::create([
             'operator' => $operatorId,
@@ -50,5 +50,4 @@ class MessageController extends Controller
         return redirect()->route('message.room', ['id' => $request->id])
             ->with('success', 'メッセージを送信しました。');
     }
-
 }

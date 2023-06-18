@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password')->nullable(false);
             $table->string('tell')->nullable(false);
-            $table->string('human_name')->nullable()->default("不明");
+            $table->string('human_name')->nullable()->default('不明');
             $table->foreignId('industry_id')->nullable()->constrained('industries');
             $table->rememberToken();
             $table->timestamps();

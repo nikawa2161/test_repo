@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("title")->nullable(false);
-            $table->string("content")->nullable(false);
+            $table->string('title')->nullable(false);
+            $table->string('content')->nullable(false);
             $table->foreignId('company_id')->nullable()->constrained('companies');
             $table->timestamps();
         });

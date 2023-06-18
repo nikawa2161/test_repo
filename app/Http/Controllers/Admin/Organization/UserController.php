@@ -13,6 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+
         return view('admin.organization.user', ['users' => $users]);
     }
 
@@ -35,6 +36,6 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.user')
-        ->with('success','ユーザーが削除されました');
+            ->with('success', 'ユーザーが削除されました');
     }
 }
