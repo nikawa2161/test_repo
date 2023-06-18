@@ -80,6 +80,8 @@ Route::middleware('auth:company')->group(function () {
     Route::get('entry/{id}', [EntryController::class, 'show'])
         ->name('entry.show');
 
+    Route::post('entry/{id}', [EntryController::class, 'show']);
+
     // アカウント管理
     Route::get('account', [AccountController::class, 'index'])
         ->name('account');
