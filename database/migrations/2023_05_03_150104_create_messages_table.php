@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("content")->nullable(false);
+            $table->string('content')->nullable(false);
             $table->foreignId('application_id')->nullable()->constrained('applications');
             $table->timestamps();
         });

@@ -5,16 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Feature extends Model
+class Application extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'user_id',
         'offer_id',
     ];
 
-    // featureとofferのリレーション
+    // ApplicationとUserのリレーション
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // ApplicationとOfferのリレーション
     public function offer()
     {
         return $this->belongsTo(Offer::class);

@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('industries', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->nullable(false);
-            $table->timestamps();
+        Schema::table('messages', function (Blueprint $table) {
+            $table->string('operator')->nullable(false);
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('industries');
+        Schema::table('messages', function (Blueprint $table) {
+            $table->dropColumn('operator');
+        });
     }
 };

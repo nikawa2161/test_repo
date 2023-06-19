@@ -11,10 +11,10 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 // Organization
 use App\Http\Controllers\Admin\Organization\CompanyController;
-use App\Http\Controllers\Admin\Organization\UserController;
-use App\Http\Controllers\Admin\Organization\OfferController;
-use App\Http\Controllers\Admin\Organization\IndustryController;
 use App\Http\Controllers\Admin\Organization\FeatureController;
+use App\Http\Controllers\Admin\Organization\IndustryController;
+use App\Http\Controllers\Admin\Organization\OfferController;
+use App\Http\Controllers\Admin\Organization\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {

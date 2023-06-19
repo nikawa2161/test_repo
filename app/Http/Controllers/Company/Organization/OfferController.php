@@ -14,7 +14,13 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offers = Offer::where('company_id', Auth::user()->id)->get();
+        $hasParentId = Auth::user()->parent_id;
+        if ($hasParentId !== null) {
+            $offers = Offer::where('company_id', $hasParentId)->get();
+        } else {
+            $offers = Offer::where('company_id', Auth::user()->id)->get();
+        }
+
         return view('company.organization.offer', ['offers' => $offers]);
     }
 
@@ -31,7 +37,7 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        $params = $request->only(['title', "content"]); // 値を限定する
+        $params = $request->only(['title', 'content']); // 値を限定する
         $request->validate([
             'title' => 'required',
             'content' => 'required',

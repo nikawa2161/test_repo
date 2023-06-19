@@ -41,14 +41,19 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        $this->is('admin/*') ? $guard = 'admin' : $guard = 'web';
-        $this->is('company/*') ? $guard = 'company' : $guard = 'web';
+        if ($this->is('admin/*')) {
+            $guard = 'admin';
+        } elseif ($this->is('company/*')) {
+            $guard = 'company';
+        } else {
+            $guard = 'web';
+        }
 
         if (! Auth::guard($guard)->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => '認証に失敗しました。',
             ]);
         }
 

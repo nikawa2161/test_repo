@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('industries', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->nullable(false);
-            $table->timestamps();
+        Schema::table('companies', function (Blueprint $table) {
+            $table->foreignId('parent_id')->nullable()->constrained('companies');
         });
     }
 
@@ -23,6 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('industries');
+        Schema::table('companies', function (Blueprint $table) {
+            $table->dropForeign(['parent_id']);
+            $table->dropColumn('parent_id');
+        });
     }
 };

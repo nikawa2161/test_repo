@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Organization;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
@@ -15,7 +14,7 @@ class CompanyController extends Controller
     {
         $companies = Company::All();
 
-        return view('admin.organization.company', ["companies" => $companies]);
+        return view('admin.organization.company', ['companies' => $companies]);
     }
 
     /**
@@ -24,6 +23,7 @@ class CompanyController extends Controller
     public function show(string $id)
     {
         $company = Company::findOrFail($id);
+
         return view('admin.organization.company_show', compact('company'));
     }
 
@@ -36,6 +36,6 @@ class CompanyController extends Controller
         $company->delete();
 
         return redirect()->route('admin.company')
-        ->with('success','アイテムが削除されました');
+            ->with('success', 'アイテムが削除されました');
     }
 }

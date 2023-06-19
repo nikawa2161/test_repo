@@ -15,13 +15,15 @@ class FeatureController extends Controller
     public function index()
     {
         $features = Feature::All();
-        return view('admin.organization.feature',["features" => $features]);
+
+        return view('admin.organization.feature', ['features' => $features]);
     }
 
     public function create()
     {
         $offers = Offer::All();
-        return view('admin.organization.feature_create',["offers" => $offers]);
+
+        return view('admin.organization.feature_create', ['offers' => $offers]);
     }
 
     public function store(Request $request)
@@ -34,7 +36,7 @@ class FeatureController extends Controller
         Feature::create($request->all());
 
         return redirect()->route('admin.feature')
-        ->with('success', '特徴を作成しました。');
+            ->with('success', '特徴を作成しました。');
     }
 
     public function edit(string $id)
@@ -57,7 +59,7 @@ class FeatureController extends Controller
         $feature->update($data);
 
         return redirect()->route('admin.feature')
-        ->with('success', '特徴を更新しました。');
+            ->with('success', '特徴を更新しました。');
     }
 
     public function destroy(string $id)
@@ -66,6 +68,6 @@ class FeatureController extends Controller
         $feature->delete();
 
         return redirect()->route('admin.feature')
-        ->with('success','アイテムが削除されました');
+            ->with('success', 'アイテムが削除されました');
     }
 }

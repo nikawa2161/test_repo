@@ -21,6 +21,7 @@ class Company extends Authenticatable
         'email',
         'password',
         'tell',
+        'parent_id',
     ];
 
     /**
@@ -43,8 +44,8 @@ class Company extends Authenticatable
     ];
 
     // OfferとCompanyのリレーション
-    public function offer(){
+    public function offer()
+    {
         return $this->hasMany(Offer::class);
     }
-
 }

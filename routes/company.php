@@ -10,6 +10,8 @@ use App\Http\Controllers\Company\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Company\Auth\RegisteredUserController;
 use App\Http\Controllers\Company\Auth\VerifyEmailController;
 // Organization
+use App\Http\Controllers\Company\Organization\AccountController;
+use App\Http\Controllers\Company\Organization\EntryController;
 use App\Http\Controllers\Company\Organization\OfferController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,14 +73,21 @@ Route::middleware('auth:company')->group(function () {
 
     Route::post('offer', [OfferController::class, 'store']);
 
-    // Route::get('offer/{id}', [OfferController::class, 'show'])
-    //     ->name('offer.show');
+    // 応募
+    Route::get('entry', [EntryController::class, 'index'])
+        ->name('entry');
 
-    // Route::get('offer/{id}/edit', [OfferController::class, 'edit'])
-    //     ->name('offer.edit');
+    Route::get('entry/{id}', [EntryController::class, 'show'])
+        ->name('entry.show');
 
-    // Route::put('offer/{id}/edit', [OfferController::class, 'update']);
+    Route::post('entry/{id}', [EntryController::class, 'show']);
 
-    // Route::delete('offer/{id}', [OfferController::class, 'destroy'])
-    //     ->name('offer.destroy');
+    // アカウント管理
+    Route::get('account', [AccountController::class, 'index'])
+        ->name('account');
+
+    Route::get('account/create', [AccountController::class, 'create'])
+        ->name('account.create');
+
+    Route::post('account', [AccountController::class, 'store']);
 });
