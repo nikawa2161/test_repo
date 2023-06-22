@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tell')->nullable(false);
-            $table->string('human_name')->nullable()->default('不明');
-            $table->foreignId('industry_id')->nullable()->constrained('industries');
+            $table->foreignId('company_id')->nullable()->constrained('companies');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password')->nullable(false);
+            $table->rememberToken();
             $table->timestamps();
+            $table->timestamp('email_verified_at')->nullable();
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('accounts');
     }
 };

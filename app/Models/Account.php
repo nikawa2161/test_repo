@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Company extends Authenticatable
+class Account extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,9 +18,9 @@ class Company extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'tell',
-        'human_name',
-        'industry_id',
+        'email',
+        'password',
+        'company_id',
     ];
 
     /**
@@ -42,4 +42,9 @@ class Company extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // OfferとCompanyのリレーション
+    public function offer()
+    {
+        return $this->hasMany(Offer::class);
+    }
 }
