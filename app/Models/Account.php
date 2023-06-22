@@ -42,9 +42,8 @@ class Account extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // OfferとCompanyのリレーション
-    public function offer()
+    public function company()
     {
-        return $this->hasMany(Offer::class);
+        return $this->hasOne(Company::class);
     }
 }
