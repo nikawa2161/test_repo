@@ -13,14 +13,8 @@ class EntryController extends Controller
 {
     public function index()
     {
-
-        $hasParentId = Auth::user()->parent_id;
-        if ($hasParentId !== null) {
-            $offers = Offer::where('company_id', $hasParentId)->get();
-        } else {
-            $offers = Offer::where('company_id', Auth::user()->id)->get();
-        }
-
+        $companyId = Auth::user()->company_id;
+        $offers = Offer::where('company_id', $companyId)->get();
         $entries = Application::whereIn('offer_id', $offers->pluck('id'))->get();
 
         return view('company.organization.entry', ['entries' => $entries]);
