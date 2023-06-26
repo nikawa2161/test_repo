@@ -17,7 +17,7 @@ class OfferController extends Controller
      */
     public function index(): View
     {
-        $offers = Offer::where('company_id', Auth::user()->company_id)->get();
+        $offers = Offer::where('account_id', Auth::user()->account_id)->get();
 
         return view('company.organization.offer', ['offers' => $offers]);
     }
@@ -47,7 +47,7 @@ class OfferController extends Controller
         Offer::create([
             'title' => $params['title'],
             'content' => $params['content'],
-            'company_id' => Auth::user()->company_id, // 外部キー
+            'account_id' => Auth::user()->account_id, // 外部キー
         ]);
 
         return redirect()->route('company.offer')
