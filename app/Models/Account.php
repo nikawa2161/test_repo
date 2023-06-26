@@ -21,6 +21,7 @@ class Account extends Authenticatable
         'email',
         'password',
         'company_id',
+        'industry_id',
     ];
 
     /**

@@ -12,22 +12,19 @@ class Offer extends Model
     protected $fillable = [
         'title',
         'content',
-        'company_id',
+        'account_id',
     ];
 
-    // OfferとCompanyのリレーション
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Account::class);
     }
 
-    // Offerとfeatureのリレーション
     public function feature()
     {
         return $this->belongsTo(Feature::class);
     }
 
-    // Offerとentryのリレーション
     public function entry()
     {
         return $this->belongsTo(Application::class);
