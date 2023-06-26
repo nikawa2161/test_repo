@@ -31,18 +31,18 @@ class EntryController extends Controller
         return view('company.organization.entry_show', compact('roomInfo', 'user', 'offer', 'messages'));
     }
 
-        // メッセージ送信
-        public function store(Request $request, string $id)
-        {
-            $operatorId = '0';
+    // メッセージ送信
+    public function store(Request $request, string $id)
+    {
+        $operatorId = '0';
 
-            Message::create([
-                'operator' => $operatorId,
-                'content' => $request->content,
-                'application_id' => $request->application_id,
-            ]);
+        Message::create([
+            'operator' => $operatorId,
+            'content' => $request->content,
+            'application_id' => $request->application_id,
+        ]);
 
-            return redirect()->route('entry.show', ['id' => $request->id])
-                ->with('success', 'メッセージを送信しました。');
-        }
+        return redirect()->route('company.entry.show', ['id' => $request->id])
+            ->with('success', 'メッセージを送信しました。');
+    }
 }
