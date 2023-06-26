@@ -14,7 +14,7 @@
                     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
                       <div class="rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
                         <div class="flex items-center justify-between">
-                            <p class="text-xl font-bold text-gray-800 md:text-2xl">求人：{{ $offer->title }}</p>
+                            <p class="text-xl font-bold text-gray-800 ">求人：{{ $offer->title }}</p>
                                 <x-my-nav-link :href="route('message.room',[ $offer->id ])">
                                     {{ __('チャット') }}
                                 </x-my-nav-link>

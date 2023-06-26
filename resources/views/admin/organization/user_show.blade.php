@@ -17,9 +17,9 @@
                 <div class=" py-2 sm:py-4 lg:py-8">
                     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
                         <div class=" rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
-                            <p class="text-xl mb-4 font-bold text-gray-800 md:text-2xl">ユーザー名：{{ $user->name }}</p>
-                            <p class="text-xl mb-4 font-bold text-gray-800 md:text-2xl">メールアドレス：{{ $user->email }}</p>
-                            <p class="text-xl mb-4 font-bold text-gray-800 md:text-2xl">登録日：{{ $user->created_at->format('Y/m/d') }}</p>
+                            <p class="text-xl mb-4 font-bold text-gray-800 ">ユーザー名：{{ $user->name }}</p>
+                            <p class="text-xl mb-4 font-bold text-gray-800 ">メールアドレス：{{ $user->email }}</p>
+                            <p class="text-xl mb-4 font-bold text-gray-800 ">登録日：{{ $user->created_at->format('Y/m/d') }}</p>
                         </div>
                     </div>
                 </div>

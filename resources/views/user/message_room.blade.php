@@ -13,8 +13,8 @@
                 <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
                     <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
                         <div class="">
-                            <p class="mb-4 text-xl font-bold text-gray-800 md:text-2xl">企業名：{{ $company->name }}</p>
-                            <p class="mb-4 text-xl font-bold text-gray-800 md:text-2xl">求人：{{ $offer->title }}</p>
+                            <p class="mb-4 text-xl font-bold text-gray-800 ">企業名：{{ $company->name }}</p>
+                            <p class="mb-4 text-xl font-bold text-gray-800 ">求人：{{ $offer->title }}</p>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4 w-3/4">
                     @endif
                     <div class="">
-                        <p class="mb-4 text-xl font-bold text-gray-800 md:text-2xl">{{ $message->content }}</p>
+                        <p class="mb-4 text-xl font-bold text-gray-800 ">{{ $message->content }}</p>
                     </div>
                 </div>
             </div>

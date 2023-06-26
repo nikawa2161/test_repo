@@ -28,9 +28,9 @@
                 <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
                     <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
                         <div class="">
-                            <p class="mb-4 text-xl font-bold text-gray-800 md:text-2xl">企業名：{{ $company->name }}</p>
-                            <p class="mb-4 text-xl font-bold text-gray-800 md:text-2xl">タイトル：{{ $offer->title }}</p>
-                            <p class="text-xl font-bold text-gray-800 md:text-2xl">内容：{{ $offer->content }}</p>
+                            <p class="mb-4 text-xl font-bold text-gray-800 ">企業名：{{ $company->name }}</p>
+                            <p class="mb-4 text-xl font-bold text-gray-800 ">タイトル：{{ $offer->title }}</p>
+                            <p class="text-xl font-bold text-gray-800 ">内容：{{ $offer->content }}</p>
                         </div>
                     </div>
                 </div>

@@ -38,7 +38,7 @@
                             <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4 w-3/4">
                         @endif
                         <div class="">
-                            <p class="mb-4 text-xl font-bold text-gray-800 md:text-2xl">{{ $message->content }}</p>
+                            <p class="mb-4 text-xl font-bold text-gray-800 ">{{ $message->content }}</p>
                         </div>
                     </div>
                 </li>

@@ -15,9 +15,9 @@
             <li class=" py-2 sm:py-4 lg:py-4">
                 <div class="mx-auto max-w-screen-2xl px-4 md:px-4">
                   <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
-                        <p class="text-xl font-bold text-gray-800 md:text-2xl">名前</p>
-                        <p class="text-xl font-bold text-gray-800 md:text-2xl">メールアドレス</p>
-                        <p class="text-xl font-bold text-gray-800 md:text-2xl">Action</p>
+                        <p class="text-xl font-bold text-gray-800 ">名前</p>
+                        <p class="text-xl font-bold text-gray-800 ">メールアドレス</p>
+                        <p class="text-xl font-bold text-gray-800 ">Action</p>
                   </div>
                 </div>
               </li>
@@ -25,9 +25,9 @@
                     <li class=" py-2 sm:py-4 lg:py-4">
                     <div class="mx-auto max-w-screen-2xl px-4 md:px-4">
                       <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
-                            <p class="text-xl font-bold text-gray-800 md:text-2xl">{{ $account->name }}</p>
-                            <p class="text-xl font-bold text-gray-800 md:text-2xl">{{ $account->email }}</p>
-                            <p class="text-xl font-bold text-gray-800 md:text-2xl">アクション</p>
+                            <p class="text-xl font-bold text-gray-800 ">{{ $account->name }}</p>
+                            <p class="text-xl font-bold text-gray-800 ">{{ $account->email }}</p>
+                            <p class="text-xl font-bold text-gray-800 ">アクション</p>
                       </div>
                     </div>
                   </li>
