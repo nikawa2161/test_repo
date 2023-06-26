@@ -2,7 +2,7 @@
     <ul class="space-y-2 font-medium">
        <li>
         <a href="{{ route('company.dashboard') }}">
-            <x-application-logo class="block h-9 w-auto fill-current text-white dark:text-gray-200" />
+            <x-application-logo class="block h-9 w-auto fill-current text-white dark:text-gray-800" />
         </a>
        </li>
        <li>
