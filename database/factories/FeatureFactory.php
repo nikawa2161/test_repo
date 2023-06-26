@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
+use App\Models\Feature;
 use App\Models\Offer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class OfferFactory extends Factory
+class FeatureFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Offer::class;
+    protected $model = Feature::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +23,8 @@ class OfferFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence,
-            'content' => $this->faker->text(50),
-            'account_id' => \App\Models\Account::factory(),
+            'name' => $this->faker->words(3, true),
+            'offer_id' => Offer::factory(),
         ];
     }
 }
