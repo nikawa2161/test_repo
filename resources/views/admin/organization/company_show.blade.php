@@ -19,8 +19,7 @@
                         <div class=" rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
                             <p class="mb-4 text-xl font-bold text-gray-800 ">業界名：{{ $company->name }}</p>
                             <p class="mb-4 text-xl font-bold text-gray-800 ">メールアドレス：{{ $company->email }}</p>
-                            <p class="mb-4 text-xl font-bold text-gray-800 ">tell:{{ $company->name }}</p>
-                            <p class="mb-4 text-xl font-bold text-gray-800 ">代表者名:{{ $company->human_name }}</p>
+                            <p class="mb-4 text-xl font-bold text-gray-800 ">代表者名:{{ $company->representative_name }}</p>
                         </div>
                     </div>
                 </div>
