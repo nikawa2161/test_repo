@@ -15,10 +15,10 @@ class Offer extends Model
         'account_id',
     ];
 
-    // public function company()
-    // {
-    //     return $this->belongsTo(Account::class);
-    // }
+    public function company()
+    {
+        return $this->belongsTo(Account::class);
+    }
 
     public function feature()
     {
