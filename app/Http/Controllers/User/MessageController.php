@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Account;
 use App\Models\Application;
 use App\Models\Message;
 use App\Models\Offer;
@@ -26,7 +27,7 @@ class MessageController extends Controller
     public function room(string $id)
     {
         $offer = Offer::find($id);
-        $company = $offer->company;
+        $company = Account::find($offer->account_id);
         $roomInfo = Application::where('user_id', Auth::id())
             ->where('offer_id', $id)
             ->first();
