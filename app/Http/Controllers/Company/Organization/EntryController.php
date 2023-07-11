@@ -32,7 +32,7 @@ class EntryController extends Controller
     }
 
     // メッセージ送信
-    public function store(Request $request, string $id)
+    public function store(Request $request)
     {
         $operatorId = '0';
 
@@ -42,7 +42,7 @@ class EntryController extends Controller
             'application_id' => $request->application_id,
         ]);
 
-        return redirect()->route('company.entry.show', ['id' => $request->id])
+        return redirect()->route('company.entry.show', ['id' => $request->application_id])
             ->with('success', 'メッセージを送信しました。');
     }
 }

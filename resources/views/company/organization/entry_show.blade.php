@@ -46,7 +46,7 @@
                 <li class=" py-2 sm:py-4 lg:py-8">
                     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-                        <form method="post" action="{{ route('message.store',[ $offer->id ]) }}">
+                        <form method="post" action="{{ route('company.entry.store') }}">
                             @csrf
                             <input type="hidden" name="application_id" value="{{ $roomInfo->id }}">
                             <input type="text" name="content" id="content" required>
