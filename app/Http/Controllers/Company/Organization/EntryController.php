@@ -13,7 +13,7 @@ class EntryController extends Controller
 {
     public function index()
     {
-        $accountId = Auth::user()->id;
+        $accountId = Auth::user()->company_id;
         $offers = Offer::where('account_id', $accountId)->get();
         $entries = Application::whereIn('offer_id', $offers->pluck('id'))->get();
 

@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-xs">
+        <div>
             <div class="bg-white shadow-xl rounded-lg py-3">
                 <div class="h-20 bg-gray-800 flex items-center justify-center">
                     <p class="mr-0 text-white text-lg pl-5">{{$offer->title}}</p>
