@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Organization;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
+use App\Models\Account;
 
 class CompanyController extends Controller
 {
@@ -12,7 +12,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::All();
+        $companies = Account::All();
 
         return view('admin.organization.company', ['companies' => $companies]);
     }
@@ -22,7 +22,7 @@ class CompanyController extends Controller
      */
     public function show(string $id)
     {
-        $company = Company::findOrFail($id);
+        $company = Account::findOrFail($id);
 
         return view('admin.organization.company_show', compact('company'));
     }
@@ -32,7 +32,7 @@ class CompanyController extends Controller
      */
     public function destroy(string $id)
     {
-        $company = Company::findOrFail($id);
+        $company = Account::findOrFail($id);
         $company->delete();
 
         return redirect()->route('admin.company')

@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-800 leading-tight">
             {{ __('企業一覧') }}
         </h2>
     </x-slot>
@@ -9,10 +9,10 @@
         <ul class="py-4 mt-4 bg-white">
             @foreach ($companies as $i => $company)
                 <li class=" py-2 sm:py-4 lg:py-8">
-                    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-                      <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-8">
+                    <div class="mx-auto max-w-screen-2xl px-4 md:px-4">
+                      <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
                         <div class="">
-                            <p class="mb-4 text-xl font-bold text-indigo-500 md:text-2xl"><span class="text-blue-500">{{ $i + 1 }}></span>企業名：{{ $company->name }}</p>
+                            <p class="mb-4 text-xl font-bold text-gray-800"><span class="text-red-500">{{ $i + 1 }}></span>企業名：{{ $company->name }}</p>
                         </div>
                             <div class="">
                                 <x-my-nav-link :href="route('admin.company.show',[ $company->id ])">

@@ -13,14 +13,8 @@ class EntryController extends Controller
 {
     public function index()
     {
-
-        $hasParentId = Auth::user()->parent_id;
-        if ($hasParentId !== null) {
-            $offers = Offer::where('company_id', $hasParentId)->get();
-        } else {
-            $offers = Offer::where('company_id', Auth::user()->id)->get();
-        }
-
+        $accountId = Auth::user()->company_id;
+        $offers = Offer::where('account_id', $accountId)->get();
         $entries = Application::whereIn('offer_id', $offers->pluck('id'))->get();
 
         return view('company.organization.entry', ['entries' => $entries]);
@@ -37,18 +31,18 @@ class EntryController extends Controller
         return view('company.organization.entry_show', compact('roomInfo', 'user', 'offer', 'messages'));
     }
 
-        // メッセージ送信
-        public function store(Request $request, string $id)
-        {
-            $operatorId = '0';
+    // メッセージ送信
+    public function store(Request $request)
+    {
+        $operatorId = '0';
 
-            Message::create([
-                'operator' => $operatorId,
-                'content' => $request->content,
-                'application_id' => $request->application_id,
-            ]);
+        Message::create([
+            'operator' => $operatorId,
+            'content' => $request->content,
+            'application_id' => $request->application_id,
+        ]);
 
-            return redirect()->route('entry.show', ['id' => $request->id])
-                ->with('success', 'メッセージを送信しました。');
-        }
+        return redirect()->route('company.entry.show', ['id' => $request->application_id])
+            ->with('success', 'メッセージを送信しました。');
+    }
 }

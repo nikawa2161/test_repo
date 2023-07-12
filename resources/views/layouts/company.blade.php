@@ -17,7 +17,7 @@
     <body class="font-sans antialiased">
         <div class="flex">
             {{-- サイドバー --}}
-            <aside id="default-sidebar" class="bg-gray-800 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <aside id="default-sidebar" class="bg-gray-800 w-64 h-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
                 @include('layouts.company_sidebar')
              </aside>
             <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex-1">

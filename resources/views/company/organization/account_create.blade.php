@@ -1,6 +1,6 @@
 <x-company-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-800 leading-tight">
             {{ __('アカウント作成') }}
         </h2>
     </x-slot>
@@ -14,13 +14,6 @@
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
-
-        <!-- Tell -->
-        <div class="mt-4">
-            <x-input-label for="tell" :value="__('Tell')" />
-            <x-text-input id="tell" class="block mt-1 w-full" type="tell" name="tell" :value="old('tell')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('tell')" class="mt-2" />
         </div>
 
         <!-- Email Address -->

@@ -4,40 +4,41 @@ namespace App\Http\Controllers\Company\Organization;
 
 use App\Http\Controllers\Controller;
 use App\Models\Offer;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class OfferController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 求人一覧
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        $hasParentId = Auth::user()->parent_id;
-        if ($hasParentId !== null) {
-            $offers = Offer::where('company_id', $hasParentId)->get();
-        } else {
-            $offers = Offer::where('company_id', Auth::user()->id)->get();
-        }
+        $offers = Offer::where('account_id', Auth::user()->company_id)->get();
 
         return view('company.organization.offer', ['offers' => $offers]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 求人作成画面
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('company.organization.offer_create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 求人作成処理
+     * @param  Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $params = $request->only(['title', 'content']); // 値を限定する
+        $params = $request->only(['title', 'content']);
         $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -46,7 +47,7 @@ class OfferController extends Controller
         Offer::create([
             'title' => $params['title'],
             'content' => $params['content'],
-            'company_id' => auth()->user()->id, // 外部キー
+            'account_id' => Auth::user()->company_id, // 外部キー
         ]);
 
         return redirect()->route('company.offer')
