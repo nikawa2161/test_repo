@@ -21,4 +21,16 @@ class Company extends Authenticatable
         'company_name',
         'industry_id',
     ];
+
+    public function account()
+    {
+        return $this->hasMany(Account::class);
+    }
+
+    public function industry()
+    {
+        return $this->belongsTo(Industry::class);
+    }
+
+
 }
