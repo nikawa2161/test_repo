@@ -18,5 +18,7 @@ class Company extends Authenticatable
      */
     protected $fillable = [
         'tell',
+        'company_name',
+        'industry_id',
     ];
 }

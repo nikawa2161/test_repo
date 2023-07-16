@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('company_id')->nullable()->constrained('companies');
-            $table->string('name');
+            $table->string('name')->default('未設定');
             $table->string('email')->unique();
             $table->string('password')->nullable(false);
             $table->rememberToken();
