@@ -59,7 +59,9 @@ Route::prefix('company')->name('company.')->group(function () {
         return view('company.welcome');
     });
     Route::get('/dashboard', [DashboardCompanyController::class, 'index'])
-        ->middleware(['auth:company', 'verified'])->name('dashboard');;
+        ->middleware(['auth:company', 'verified'])->name('dashboard');
+    Route::post('/dashboard', [DashboardCompanyController::class, 'update'])
+        ->middleware(['auth:company', 'verified'])->name('dashboard');
 
     Route::middleware('auth:company')->group(function () {
         Route::get('/profile', [ProfileOfCompanyController::class, 'edit'])->name('profile.edit');

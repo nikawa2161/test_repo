@@ -26,11 +26,13 @@
                                   <a href="#" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">企業名</a>
                                 </h2>
 
-                                <p class="text-gray-800">{{$company->company_name}}</p>
-
-                                <div>
-                                  <a href="#" class="font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">Read more</a>
-                                </div>
+                                <form class="change-content" action="{{ route('company.dashboard') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="company_name" class="targetInfo text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{$company->company_name}}">
+                                    <div>
+                                        <button type="submit" class="submitBtn font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700 hidden">変更確定</button>
+                                    </div>
+                                </form>
                               </div>
                             </div>
                             <!-- 企業 - end -->
@@ -48,11 +50,13 @@
                                   <a href="#" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">業界</a>
                                 </h2>
 
-                                <p class="text-gray-800">{{ $company->industry->name }}</p>
-
-                                <div>
-                                  <a href="#" class="font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">Read more</a>
-                                </div>
+                                <form class="change-content" action="{{ route('company.dashboard') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="industry" class="targetInfo text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{ $company->industry->name }}">
+                                    <div>
+                                        <button type="submit" class="submitBtn font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700 hidden">変更確定</button>
+                                    </div>
+                                </form>
                               </div>
                             </div>
                             <!-- 業界 - end -->
@@ -69,12 +73,14 @@
                                 <h2 class="text-xl font-bold text-gray-800">
                                   <a href="#" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">電話番号</a>
                                 </h2>
+                                <form class="change-content" action="{{ route('company.dashboard') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="tell" class="targetInfo text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{ $company->tell }}">
+                                    <div>
+                                        <button type="submit" class="submitBtn font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700 hidden">変更確定</button>
+                                    </div>
+                                </form>
 
-                                <p class="text-gray-800">{{ $company->tell }}</p>
-
-                                <div>
-                                  <a href="#" class="font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">Read more</a>
-                                </div>
                               </div>
                             </div>
                             <!-- 電話番号 - end -->
@@ -86,4 +92,38 @@
             </div>
         </div>
     </div>
+    <script>
+        const inputForms = document.querySelectorAll('.change-content');
+
+        inputForms.forEach(form => {
+            const inputTarget = form.querySelector('.targetInfo');
+            const inputValueCurrent = inputTarget.value;
+
+            inputTarget.addEventListener('focus', () => {
+                form.querySelector('.submitBtn').classList.remove('hidden');
+            });
+            // 「値が未変更」かつ「表示中」の場合
+            inputTarget.addEventListener('blur', () => {
+                if (form.dataset.changed !== "true" && !form.querySelector('.submitBtn').classList.contains('hidden')) {
+                    form.querySelector('.submitBtn').classList.add('hidden');
+                }
+            });
+            // 値変更されたらdata属性付与
+            inputTarget.addEventListener('input', () => {
+                form.dataset.changed = true;
+
+                if(inputValueCurrent === inputTarget.value) {
+                    form.dataset.changed = "";
+                }
+            });
+
+            form.querySelector('.submitBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                if(form.dataset.changed === 'true') {
+                    form.submit();
+                }
+            })
+        });
+    </script>
 </x-company-layout>
+
