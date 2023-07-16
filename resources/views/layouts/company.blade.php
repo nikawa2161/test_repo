@@ -30,8 +30,13 @@
                         {{ $header }}
 
                         @if (session('success'))
-                            <div class="alert alert-success">
+                            <div class="bg-blue-100 border border-blue-500 text-blue-700 px-4 py-3 rounded" role="alert">
                                 {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded" role="alert">
+                                {{ session('error') }}
                             </div>
                         @endif
                     </div>
