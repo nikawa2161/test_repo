@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Company\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Models\Feature;
 use App\Models\Offer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +18,7 @@ class OfferController extends Controller
      */
     public function index(): View
     {
-        $offers = Offer::where('account_id', Auth::user()->company_id)->get();
+        $offers = Offer::whereIn('account_id', Auth::user()->company->account->pluck('id'))->get();
 
         return view('company.organization.offer', ['offers' => $offers]);
     }
@@ -28,7 +29,9 @@ class OfferController extends Controller
      */
     public function create(): View
     {
-        return view('company.organization.offer_create');
+        $features = Feature::all();
+
+        return view('company.organization.offer_create', compact('features'));
     }
 
     /**
@@ -38,7 +41,7 @@ class OfferController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $params = $request->only(['title', 'content']);
+        $params = $request->only(['title', 'content', 'feature_id']);
         $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -47,7 +50,8 @@ class OfferController extends Controller
         Offer::create([
             'title' => $params['title'],
             'content' => $params['content'],
-            'account_id' => Auth::user()->company_id, // 外部キー
+            'account_id' => Auth::user()->id,
+            'feature_id' => $params['feature_id'],
         ]);
 
         return redirect()->route('company.offer')

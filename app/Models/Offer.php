@@ -12,10 +12,11 @@ class Offer extends Model
     protected $fillable = [
         'title',
         'content',
+        'feature_id',
         'account_id',
     ];
 
-    public function company()
+    public function account()
     {
         return $this->belongsTo(Account::class);
     }

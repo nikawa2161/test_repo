@@ -14,6 +14,12 @@
                     <input type="text" name="title" id="title" required>
                     <label for="content">募集内容</label>
                     <input type="text" name="content" id="content" required>
+                    <label for="feature">特徴</label>
+                    <select name="feature_id" class="targetInfo text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        @foreach ($features as $feature)
+                            <option value="{{ $feature->id }}">{{ $feature->name }}</option>
+                        @endforeach
+                    </select>
                     @error('title')
                         <p>{{ $message }}</p>
                     @enderror

@@ -53,7 +53,7 @@
                                 <form class="change-content" action="{{ route('company.dashboard') }}" method="POST">
                                     @csrf
                                     <select name="industry_id" class="targetInfo text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                        <option value="{{ $company->industry->id }}" selected>{{ $company->industry->name }}</option>
+                                        <option value="{{ $company->industry->id ?? '' }}" selected>{{ $company->industry->name ?? '未設定' }}</option>
                                         @foreach ($industries as $industry)
                                             <option value="{{ $industry->id }}">{{ $industry->name }}</option>
                                         @endforeach
