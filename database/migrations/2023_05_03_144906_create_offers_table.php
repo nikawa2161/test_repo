@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('title')->nullable(false);
             $table->string('content')->nullable(false);
+            $table->foreignId('feature_id')->nullable()->constrained('features');
             $table->foreignId('company_id')->nullable()->constrained('companies');
             $table->timestamps();
         });
