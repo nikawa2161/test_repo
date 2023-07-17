@@ -30,10 +30,10 @@ class FeatureController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'offer_id' => 'required',
         ]);
 
         Feature::create($request->all());
+
 
         return redirect()->route('admin.feature')
             ->with('success', '特徴を作成しました。');
@@ -42,9 +42,8 @@ class FeatureController extends Controller
     public function edit(string $id)
     {
         $feature = Feature::findOrFail($id);
-        $offers = Offer::All();
 
-        return view('admin.organization.feature_edit', compact('feature', 'offers'));
+        return view('admin.organization.feature_edit', compact('feature'));
     }
 
     public function update(Request $request, string $id)
@@ -53,7 +52,6 @@ class FeatureController extends Controller
 
         $data = $request->validate([
             'name' => 'required',
-            'offer_id' => 'required',
         ]);
 
         $feature->update($data);
@@ -65,6 +63,7 @@ class FeatureController extends Controller
     public function destroy(string $id)
     {
         $feature = Feature::findOrFail($id);
+        Offer::where('feature_id', $id)->update(['feature_id' => null]);
         $feature->delete();
 
         return redirect()->route('admin.feature')

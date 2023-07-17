@@ -19,6 +19,7 @@
                         <div class=" rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
                             <p class="text-xl font-bold text-gray-800 ">タイトル：{{ $offer->title }}</p>
                             <p class="text-xl font-bold text-gray-800 ">内容：{{ $offer->content }}</p>
+                            <p class="text-xl font-bold text-gray-800 ">特徴：{{ $offer->feature->name ?? '' }}</p>
                         </div>
                     </div>
                 </div>

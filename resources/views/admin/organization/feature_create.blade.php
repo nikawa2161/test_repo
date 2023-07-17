@@ -10,12 +10,6 @@
             <form action="{{ route('admin.feature') }}" method="POST">
                 @csrf
                 <div>
-                    <select name="offer_id">
-                        @foreach ($offers as $offer )
-                            <option value={{$offer->id}}>{{$offer->title}}</option>
-                        @endforeach
-
-                        </select>
                     <label for="name">特徴名</label>
                     <input type="text" name="name" id="name" required>
                     @error('name')

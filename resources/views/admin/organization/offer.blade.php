@@ -13,7 +13,8 @@
                       <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
                         <div class="">
                             <p class="mb-4 text-xl font-bold text-gray-800">タイトル：{{ $offer->title }}</p>
-                            <p class="text-xl font-bold text-gray-800">内容：{{ $offer->content }}</p>
+                            <p class="mb-4text-xl font-bold text-gray-800">内容：{{ $offer->content }}</p>
+                            <p class="text-xl font-bold text-gray-800">特徴：{{ $offer->feature->name ?? '' }}</p>
                         </div>
                             <div class="">
                                 <x-my-nav-link :href="route('admin.offer.show',[ $offer->id ])">
