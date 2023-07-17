@@ -19,19 +19,17 @@
                         <div class="">
                             <p class="mb-4 text-xl font-bold text-gray-800">タイトル：{{ $offer->title }}</p>
                             <p class="mb-4 text-xl font-bold text-gray-800">内容：{{ $offer->content }}</p>
+                            <p class="mb-4 text-xl font-bold text-gray-800">特徴：{{ $offer->feature->name ?? '' }}</p>
                             <p class="text-xl font-bold text-gray-800">作成者：{{ $offer->account->name }}</p>
                         </div>
 
                             <div class="">
-                                {{-- <x-my-nav-link :href="route('admin.offer.show',[ $offer->id ])">
-                                    {{ __('詳細') }}
-                                </x-my-nav-link>
-                                <x-my-nav-link :href="route('admin.offer.edit',[ $offer->id ])">
+                                <x-my-nav-link :href="route('company.offer.edit',[ $offer->id ])">
                                     {{ __('編集') }}
                                 </x-my-nav-link>
-                                <x-my-delete-link :action="route('admin.offer.destroy', $offer->id)">
+                                <x-my-delete-link :action="route('company.offer.destroy', $offer->id)">
                                     {{ __('削除') }}
-                                </x-my-delete-link> --}}
+                                </x-my-delete-link>
                             </div>
                       </div>
                     </div>
