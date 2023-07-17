@@ -52,7 +52,12 @@
 
                                 <form class="change-content" action="{{ route('company.dashboard') }}" method="POST">
                                     @csrf
-                                    <input type="text" name="industry" class="targetInfo text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{ $company->industry->name }}">
+                                    <select name="industry_id" class="targetInfo text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="{{ $company->industry->id }}" selected>{{ $company->industry->name }}</option>
+                                        @foreach ($industries as $industry)
+                                            <option value="{{ $industry->id }}">{{ $industry->name }}</option>
+                                        @endforeach
+                                    </select>
                                     <div>
                                         <button type="submit" class="submitBtn font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700 hidden">変更確定</button>
                                     </div>
@@ -76,6 +81,9 @@
                                 <form class="change-content" action="{{ route('company.dashboard') }}" method="POST">
                                     @csrf
                                     <input type="text" name="tell" class="targetInfo text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{ $company->tell }}">
+                                    @if ($errors->has('tell'))
+                                        <p>{{ $errors->first('tell') }}</p>
+                                    @endif
                                     <div>
                                         <button type="submit" class="submitBtn font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700 hidden">変更確定</button>
                                     </div>
