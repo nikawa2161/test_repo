@@ -73,6 +73,15 @@ Route::middleware('auth:company')->group(function () {
 
     Route::post('offer', [OfferController::class, 'store']);
 
+    Route::get('offer/edit/{id}', [OfferController::class, 'edit'])
+        ->name('offer.edit');
+
+    Route::post('offer/edit/{id}', [OfferController::class, 'update'])
+        ->name('offer.update');
+
+    Route::delete('offer/destroy/{id}', [OfferController::class, 'destroy'])
+        ->name('offer.destroy');
+
     // 応募
     Route::get('entry', [EntryController::class, 'index'])
         ->name('entry');

@@ -18,7 +18,6 @@
                       <div class="flex items-center justify-between rounded-lg bg-gray-100 p-2 sm:flex-row md:p-4">
                         <div class="">
                             <p class="text-xl font-bold text-gray-800 ">特徴名：{{ $feature->name }}</p>
-                            <p class="text-xl font-bold text-gray-800 ">求人名：{{ $feature->offer->title }}</p>
                         </div>
                             <div class="">
                                 <x-my-nav-link :href="route('admin.feature.edit',[ $feature->id ])">

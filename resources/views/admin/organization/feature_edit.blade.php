@@ -17,18 +17,8 @@
                 @method('PUT')
                 @csrf
                 <div>
-                    <select name="offer_id">
-                        @foreach ($offers as $offer )
-                            @if ($offer->id == $feature->offer_id)
-                            <option value={{$offer->id}} selected = 'selected'>{{$offer->title}}</option>
-                            @else
-                            <option value={{$offer->id}}>{{$offer->title}}</option>
-                            @endif
-                        @endforeach
-
-                        </select>
                     <label for="name">特徴名</label>
-                    <input type="text" name="name" id="name" required value={{ $offer->title }}>
+                    <input type="text" name="name" id="name" required value={{ $feature->name }}>
                     @error('name')
                         <p>{{ $message }}</p>
                     @enderror

@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\Company\DashboardCompanyController;
 use App\Http\Controllers\ProfileController;
-// use App\Http\Controllers\ProfileController as ProfileOfAdminController;
 use App\Http\Controllers\ProfileOfAdminController;
 use App\Http\Controllers\ProfileOfCompanyController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +58,10 @@ Route::prefix('company')->name('company.')->group(function () {
     Route::get('/', function () {
         return view('company.welcome');
     });
-    Route::get('/dashboard', function () {
-        return view('company.dashboard');
-    })->middleware(['auth:company', 'verified'])->name('dashboard');
+    Route::get('/dashboard', [DashboardCompanyController::class, 'index'])
+        ->middleware(['auth:company', 'verified'])->name('dashboard');
+    Route::post('/dashboard', [DashboardCompanyController::class, 'update'])
+        ->middleware(['auth:company', 'verified'])->name('dashboard');
 
     Route::middleware('auth:company')->group(function () {
         Route::get('/profile', [ProfileOfCompanyController::class, 'edit'])->name('profile.edit');

@@ -43,8 +43,10 @@ class Account extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    // 従テーブルから参照する場合は、belongsToメソッドを使う
     public function company()
     {
-        return $this->hasOne(Company::class);
+        return $this->belongsTo(Company::class);
     }
 }
